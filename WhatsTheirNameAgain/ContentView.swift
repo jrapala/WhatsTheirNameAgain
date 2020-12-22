@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    let people = [
+        Person(name: "Judy", imageName: "judy.jpg"),
+        Person(name: "Eric", imageName: "eric.jpg"),
+        Person(name: "Barbara", imageName: "barbara.jpg"),
+        Person(name: "Naomi", imageName: "naomi.jpg"),
+    ]
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(people, id: \.id) { person in
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(person.name)
+                    }
+                }
+            }
+            .navigationBarTitle("What's Their Name?")
+        }
     }
 }
 
