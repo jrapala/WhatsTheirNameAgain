@@ -12,11 +12,14 @@ struct NameImageView: View {
     @State private var inputImage: UIImage?
     @State private var image: Image?
     @State private var name = ""
-    
-    let people: [Person]
+    @Binding var people: [Person]
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
+            Text("Add New Person")
+                .font(.title2)
+            
             VStack {
                 if image != nil {
                     image?
@@ -40,10 +43,9 @@ struct NameImageView: View {
                 saveImage()
             }
             .padding()
+            .disabled(name.count == 0)
 
-   
         }
-        .navigationBarTitle(Text("Add new person"), displayMode: .inline)
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: self.$inputImage)
         }
@@ -55,7 +57,9 @@ struct NameImageView: View {
     }
     
     func saveImage() {
-        
+        let newPerson = Person(name: name, image: image)
+        people.append(newPerson)
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
@@ -64,6 +68,6 @@ struct NameImageView_Previews: PreviewProvider {
         let people = [
             Person(name: "Amy", image: Image(systemName: "star"))
         ]
-        return NameImageView(people: people)
+        return NameImageView(people: .constant(people))
     }
 }

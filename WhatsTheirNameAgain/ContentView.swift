@@ -8,25 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = [Person]()
+    @State private var isShowingAddView = false
+    @State private var people = [Person]()
 
     var body: some View {
         NavigationView {
             List(people, id: \.id) { person in
                 HStack {
-                    VStack(alignment: .leading) {
-                        if person.image != nil {
-                            person.image?
-                                .resizable()
-                                .scaledToFit()
-                        }
-                        Text(person.name)
+                    if person.image != nil {
+                        person.image?
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
                     }
+                    
+                    Text(person.name)
+                        .font(.headline)
                 }
             }
-            .navigationBarTitle("What's Their Name?")
-            .navigationBarItems(trailing: NavigationLink(destination: NameImageView(people: people)) {
-                Image(systemName: "plus")
+            .navigationBarTitle("My Memory Bank")
+            .navigationBarItems(trailing: Button(action: {
+                self.isShowingAddView.toggle()
+            }) {
+                HStack {
+                    Image(systemName: "plus")
+                    Text("Add")
+                    
+                }
+            })
+            .sheet(isPresented: $isShowingAddView, content: {
+                NameImageView(people: $people)
             })
         }
     }
