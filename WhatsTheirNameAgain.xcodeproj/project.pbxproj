@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC8CBCCD259A583B009C586E /* NameImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CBCCC259A583B009C586E /* NameImageView.swift */; };
 		BCB500322592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB500312592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift */; };
 		BCB500342592AEAB00AE4962 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB500332592AEAB00AE4962 /* ContentView.swift */; };
 		BCB500362592AEAC00AE4962 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB500352592AEAC00AE4962 /* Assets.xcassets */; };
 		BCB500392592AEAC00AE4962 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB500382592AEAC00AE4962 /* Preview Assets.xcassets */; };
 		BCB500422592B0B300AE4962 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB500412592B0B300AE4962 /* Person.swift */; };
+		BCB500452592B51C00AE4962 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB500442592B51C00AE4962 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC8CBCCC259A583B009C586E /* NameImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameImageView.swift; sourceTree = "<group>"; };
 		BCB5002E2592AEAB00AE4962 /* WhatsTheirNameAgain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsTheirNameAgain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB500312592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsTheirNameAgainApp.swift; sourceTree = "<group>"; };
 		BCB500332592AEAB00AE4962 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		BCB500382592AEAC00AE4962 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCB5003A2592AEAC00AE4962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB500412592B0B300AE4962 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		BCB500442592B51C00AE4962 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,12 @@
 			children = (
 				BCB500312592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift */,
 				BCB500332592AEAB00AE4962 /* ContentView.swift */,
+				BCB500442592B51C00AE4962 /* ImagePicker.swift */,
 				BCB500352592AEAC00AE4962 /* Assets.xcassets */,
 				BCB5003A2592AEAC00AE4962 /* Info.plist */,
 				BCB500372592AEAC00AE4962 /* Preview Content */,
 				BCB500412592B0B300AE4962 /* Person.swift */,
+				BC8CBCCC259A583B009C586E /* NameImageView.swift */,
 			);
 			path = WhatsTheirNameAgain;
 			sourceTree = "<group>";
@@ -142,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB500422592B0B300AE4962 /* Person.swift in Sources */,
+				BCB500452592B51C00AE4962 /* ImagePicker.swift in Sources */,
 				BCB500342592AEAB00AE4962 /* ContentView.swift in Sources */,
+				BC8CBCCD259A583B009C586E /* NameImageView.swift in Sources */,
 				BCB500322592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

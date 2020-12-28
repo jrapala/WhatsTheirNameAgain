@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Person: Codable, Identifiable {
+struct Person: Identifiable {
     var id = UUID()
     let name: String
-    let imageName: String
+    let image: Image?
 }

@@ -8,25 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = [
-        Person(name: "Judy", imageName: "judy.jpg"),
-        Person(name: "Eric", imageName: "eric.jpg"),
-        Person(name: "Barbara", imageName: "barbara.jpg"),
-        Person(name: "Naomi", imageName: "naomi.jpg"),
-    ]
+    @State private var showingImagePicker = false
+    @State private var showingNameImageView = false
+    @State private var inputImage: UIImage?
+    @State private var image: Image?
+    
+    let people = [Person]()
 
     var body: some View {
         NavigationView {
             List(people, id: \.id) { person in
                 HStack {
                     VStack(alignment: .leading) {
+                        if person.image != nil {
+                            person.image?
+                                .resizable()
+                                .scaledToFit()
+                        }
                         Text(person.name)
                     }
                 }
             }
             .navigationBarTitle("What's Their Name?")
+            .navigationBarItems(trailing: Button(action: {
+                self.showingImagePicker.toggle()
+            }) {
+                Image(systemName: "plus")
+            })
+            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                ImagePicker(image: self.$inputImage)
+            }
         }
     }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+        self.showingNameImageView.toggle()
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
