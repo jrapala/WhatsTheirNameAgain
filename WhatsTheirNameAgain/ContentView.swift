@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingImagePicker = false
-    @State private var showingNameImageView = false
-    @State private var inputImage: UIImage?
-    @State private var image: Image?
-    
     let people = [Person]()
 
     var body: some View {
@@ -30,23 +25,12 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("What's Their Name?")
-            .navigationBarItems(trailing: Button(action: {
-                self.showingImagePicker.toggle()
-            }) {
+            .navigationBarItems(trailing: NavigationLink(destination: NameImageView(people: people)) {
                 Image(systemName: "plus")
             })
-            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                ImagePicker(image: self.$inputImage)
-            }
         }
     }
     
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-        self.showingNameImageView.toggle()
-    }
-
 }
 
 struct ContentView_Previews: PreviewProvider {
