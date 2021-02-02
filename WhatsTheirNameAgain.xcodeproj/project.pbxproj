@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC8BB19E25C9CE5500D988B8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BB19D25C9CE5500D988B8 /* DetailView.swift */; };
 		BC8CBCCD259A583B009C586E /* NameImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CBCCC259A583B009C586E /* NameImageView.swift */; };
 		BCB500322592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB500312592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift */; };
 		BCB500342592AEAB00AE4962 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB500332592AEAB00AE4962 /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC8BB19D25C9CE5500D988B8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BC8CBCCC259A583B009C586E /* NameImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameImageView.swift; sourceTree = "<group>"; };
 		BCB5002E2592AEAB00AE4962 /* WhatsTheirNameAgain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsTheirNameAgain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB500312592AEAB00AE4962 /* WhatsTheirNameAgainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsTheirNameAgainApp.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				BCB500372592AEAC00AE4962 /* Preview Content */,
 				BCB500412592B0B300AE4962 /* Person.swift */,
 				BC8CBCCC259A583B009C586E /* NameImageView.swift */,
+				BC8BB19D25C9CE5500D988B8 /* DetailView.swift */,
 			);
 			path = WhatsTheirNameAgain;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB500422592B0B300AE4962 /* Person.swift in Sources */,
+				BC8BB19E25C9CE5500D988B8 /* DetailView.swift in Sources */,
 				BCB500452592B51C00AE4962 /* ImagePicker.swift in Sources */,
 				BCB500342592AEAB00AE4962 /* ContentView.swift in Sources */,
 				BC8CBCCD259A583B009C586E /* NameImageView.swift in Sources */,

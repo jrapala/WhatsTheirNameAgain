@@ -14,16 +14,18 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(people, id: \.id) { person in
-                HStack {
-                    if person.image != nil {
-                        person.image?
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
+                NavigationLink(destination: DetailView(person: person)) {
+                    HStack {
+                        if person.image != nil {
+                            person.image?
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+
+                        Text(person.name)
+                            .font(.headline)
                     }
-                    
-                    Text(person.name)
-                        .font(.headline)
                 }
             }
             .navigationBarTitle("My Memory Bank")
