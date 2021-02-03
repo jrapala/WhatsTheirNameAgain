@@ -15,20 +15,16 @@ struct DetailView: View {
             Text(person.name)
                 .font(.title)
             
-            VStack {
-                person.image?
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 400, alignment: .center)
-            .padding()
+            PersonImage(imagePath: person.imagePath)
+                .padding()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 400, alignment: .center)
+                .padding()
         }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(person: Person(name: "Tom Hanks", image: Image("tom")))
+        DetailView(person: Person(name: "Tom Hanks", imagePath: "tom"))
     }
 }

@@ -16,13 +16,8 @@ struct ContentView: View {
             List(people, id: \.id) { person in
                 NavigationLink(destination: DetailView(person: person)) {
                     HStack {
-                        if person.image != nil {
-                            person.image?
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100, height: 100)
-                        }
-
+                        PersonImage(imagePath: person.imagePath)
+                            .frame(width: 100, height: 100)
                         Text(person.name)
                             .font(.headline)
                     }
@@ -38,9 +33,22 @@ struct ContentView: View {
                     
                 }
             })
+            .onAppear(perform: loadData)
             .sheet(isPresented: $isShowingAddView, content: {
                 NameImageView(people: $people)
             })
+        }
+    }
+        
+    func loadData() {
+        let filename = getDocumentsDirectory().appendingPathComponent("People")
+        
+        do {
+            let data = try Data(contentsOf: filename)
+            let decodedData = try JSONDecoder().decode([Person].self, from: data)
+            people = decodedData.sorted()
+        } catch {
+            print("Failed to load data")
         }
     }
     

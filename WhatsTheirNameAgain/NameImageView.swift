@@ -40,10 +40,10 @@ struct NameImageView: View {
                 .padding()
             
             Button("Save") {
-                saveImage()
+                savePerson()
             }
             .padding()
-            .disabled(name.count == 0)
+            .disabled(name.count == 0 || image == nil)
 
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
@@ -55,18 +55,47 @@ struct NameImageView: View {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
     }
-    
-    func saveImage() {
-        let newPerson = Person(name: name, image: image)
-        people.append(newPerson)
+        
+    func savePerson() {
+        guard let inputImage = inputImage else { return }
+        
+        let imageSaver = ImageSaver()
+        let fileName = UUID().uuidString
+
+        imageSaver.successHandler = {
+            let newPerson = Person(name: name, imagePath: fileName)
+            // Insert at correct location
+            if let index = people.firstIndex(where: { $0 > newPerson }) {
+                people.insert(newPerson, at: index)
+            }
+            
+            self.saveData()
+        }
+        
+        imageSaver.errorHandler = {
+            print("Oops: \($0.localizedDescription)")
+        }
+        
+        imageSaver.writeToDisk(image: inputImage, fileName: fileName)
         self.presentationMode.wrappedValue.dismiss()
+    }
+        
+    func saveData() {
+        let filename = getDocumentsDirectory().appendingPathComponent("People")
+
+        do {
+            let data = try JSONEncoder().encode(people)
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Unable to save data")
+        }
     }
 }
 
 struct NameImageView_Previews: PreviewProvider {
     static var previews: some View {
         let people = [
-            Person(name: "Amy", image: Image(systemName: "star"))
+            Person(name: "Tom Hanks", imagePath: "tom")
         ]
         return NameImageView(people: .constant(people))
     }

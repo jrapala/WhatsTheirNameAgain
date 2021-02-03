@@ -8,8 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct Person: Identifiable {
+struct Person: Codable, Comparable {
     var id = UUID()
     let name: String
-    let image: Image?
+    let imagePath: String
+    
+    static func < (lhs: Person, rhs: Person) -> Bool {
+        return lhs.name < rhs.name
+    }
 }
