@@ -11,3 +11,14 @@ func getDocumentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     return paths[0]
 }
+
+func saveData(people: [Person]) {
+    let filename = getDocumentsDirectory().appendingPathComponent("People")
+
+    do {
+        let data = try JSONEncoder().encode(people)
+        try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+    } catch {
+        print("Unable to save data")
+    }
+}

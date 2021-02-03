@@ -69,7 +69,7 @@ struct NameImageView: View {
                 people.insert(newPerson, at: index)
             }
             
-            self.saveData()
+            saveData(people: people)
         }
         
         imageSaver.errorHandler = {
@@ -78,17 +78,6 @@ struct NameImageView: View {
         
         imageSaver.writeToDisk(image: inputImage, fileName: fileName)
         self.presentationMode.wrappedValue.dismiss()
-    }
-        
-    func saveData() {
-        let filename = getDocumentsDirectory().appendingPathComponent("People")
-
-        do {
-            let data = try JSONEncoder().encode(people)
-            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
-        } catch {
-            print("Unable to save data")
-        }
     }
 }
 

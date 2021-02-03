@@ -13,15 +13,18 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List(people, id: \.id) { person in
-                NavigationLink(destination: DetailView(person: person)) {
-                    HStack {
-                        PersonImage(imagePath: person.imagePath)
-                            .frame(width: 100, height: 100)
-                        Text(person.name)
-                            .font(.headline)
+            List {
+                ForEach(people, id: \.id) { person in
+                    NavigationLink(destination: DetailView(person: person)) {
+                        HStack {
+                            PersonImage(imagePath: person.imagePath)
+                                .frame(width: 100, height: 100)
+                            Text(person.name)
+                                .font(.headline)
+                        }
                     }
                 }
+                .onDelete(perform: deletePerson)
             }
             .navigationBarTitle("My Memory Bank")
             .navigationBarItems(trailing: Button(action: {
@@ -50,6 +53,11 @@ struct ContentView: View {
         } catch {
             print("Failed to load data")
         }
+    }
+    
+    func deletePerson(at offsets: IndexSet) {
+        people.remove(atOffsets: offsets)
+        saveData(people: people)
     }
     
 }
